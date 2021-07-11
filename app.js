@@ -60,7 +60,7 @@ app.get('/habbit', isAuthenticated, getHabbit);
 app.get('/createdhabbits', createdHabbits)
 app.get('/logout', logout);
 db.sync().then(() => {
-    app.listen(8000, () => {
-        console.log('listening on port http://localhost:8000');
+    app.listen(parseInt(process.env.PORT), () => {
+        console.log('listening on port ' + process.env.PORT);
     })
 })
