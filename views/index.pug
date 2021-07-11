@@ -24,6 +24,8 @@ html(lang='en')
 								a.nav-link(href='/signup') signup
 						else
 							a.nav-link(href='/logout') logout
-				form(action='/createdHabbits' method='GET')
-					div
-						button(type='submit') Get habbit
+				
+				if user
+					form(action='/createdHabbits' method='GET')
+						div
+							button(type='submit') Get habbit
