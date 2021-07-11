@@ -1,11 +1,6 @@
 const Sequelize = require('sequelize')
-
-const db = new Sequelize({
-    dialect: 'postgresql',
-    storage: __dirname + '/habbit.db',
-    database: 'habbit',
-    username: '',
-    password: ''
+const db = new Sequelize(process.env.DATABASE_URL, {
+    dailect: 'postgres',
 })
 
 const Users = db.define('user', {

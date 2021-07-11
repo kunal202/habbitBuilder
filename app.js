@@ -6,24 +6,25 @@ const path = require('path');
 const { createUser, getSignup } = require('./controllers/signup');
 const { createHabbit, getHabbit, createdHabbits } = require('./controllers/habbit');
 const flash = require('express-flash');
-const redis = require('redis')
+const Redis = require('ioredis')
 const { Habbits } = require('../habbitbuilder/models/data');
 const session = require('express-session');
 const { getLogin, logUser, logout } = require('./controllers/login');
-const RedisStore = require('connect-redis')(session)
-const redisClient = redis.createClient()
+const ConnectRedis = require("connect-redis");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/views'));
+const RedisStore = ConnectRedis(session);
+const redis = new Redis(process.env.REDIS_URL);
 app.use(session({
     resave: false,
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
     store: new RedisStore({
-        client: redisClient
+        client: redis
     })
 }));
 app.use(flash());
