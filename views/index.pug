@@ -1,0 +1,29 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		title Habbit Builder
+		link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+	body
+		.navbar.navbar-light.fixed-top.navbar-expand-lg.bg-light
+			.container
+				a.navbar-brand(href='#') Habbit Builder
+				button.navbar-toggler(type='button' data-toggle='collapse' data-target='.navbar-collapse')
+					span.sr-only Toggle navigation
+					span.navbar-toggler-icon
+				.collapse.navbar-collapse
+					ul.nav.navbar-nav
+						li.nav-item
+							a.nav-link(href='/habbit') Create New Habbit
+					ul.nav.navbar-nav.ml-auto
+						if !user
+							li.nav-item(class=(title === 'Login') ? 'active' : undefined)
+								a.nav-link(href='/login') Login
+							li.nav-item(class=(title === 'Create Account') ? 'active' : undefined)
+								a.nav-link(href='/signup') signup
+						else
+							a.nav-link(href='/logout') logout
+				form(action='/createdHabbits' method='GET')
+					div
+						button(type='submit') Get habbit

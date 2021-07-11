@@ -1,0 +1,30 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		title Habbit Builder
+		link(rel="stylesheet" href="style.css")
+	body
+	form(id='habbit' method='POST' action = '/habbit')
+		.form-body
+			.row
+				.form-holder
+					.form-content
+						.form-items
+							h3 create new Habbit
+							p Fill in to create new Habbit.
+							form.requires-validation(novalidate='')
+								.col-md-12
+									input.form-control(type='text' name='name' placeholder='Name' required='')
+								.col-md-12
+									input.form-control(type='text' name='desc' placeholder='description' required='')
+								.col-md-12
+									input.form-control(type='text' name='freq' placeholder='frequency' required='')
+								.col-md-12
+									input.form-control(type='text' name='status' placeholder='status' required='')
+								.col-md-12
+									input.form-control(type='datetime-local' name='time' placeholder='Time' required='')
+								
+									button#submit.btn.btn-primary(type='submit') Create
+

@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title Habbit Builder
+        link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+    body
+    block content
+.pb-2.mt-2.mb-4.border-bottom
+    h3 Sign Up
+form(id='signup-form' method='POST' action = '/signup')
+    input(type='hidden' name='_csrf', value=_csrf)
+    .form-group.row
+        label.col-md-3.col-form-label.font-weight-bold.text-right(for='email') Email
+        .col-md-7
+            input.form-control(type='email' name='email' id='email' placeholder='Email', autofocus, autocomplete='email', required)
+    .form-group.row.mt-2
+        label.col-md-3.col-form-label.font-weight-bold.text-right(for='username') username
+        .col-md-7
+            input.form-control(type='name' name='username' id='username' placeholder='username' autocomplete='username', required)
+    .form-group.row.mt-2
+        label.col-md-3.col-form-label.font-weight-bold.text-right(for='password') Password
+        .col-md-7
+            input.form-control(type='password' name='password' id='password' placeholder='Password' autocomplete='new-password' minlength='8', required)
+    .form-group.row.mt-2
+        label.col-md-3.col-form-label.font-weight-bold.text-right(for='confirmPassword') Confirm Password
+        .col-md-7
+            input.form-control(type='password' name='confirmPassword' id='confirmPassword' placeholder='Confirm Password' autocomplete='new-password' minlength='8', required)
+    .form-group.offset-sm-3.col-md-7.pl-2.mt-2.d-flex.justify-content-center
+        button.btn.btn-success(type='submit')  
+            i.fas.fa-user-plus.fa-sm
+            | Sign Up
+.container
+    include flash
