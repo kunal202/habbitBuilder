@@ -1,6 +1,12 @@
 const Sequelize = require('sequelize')
 const db = new Sequelize(process.env.DATABASE_URL, {
     dailect: 'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
 })
 
 const Users = db.define('user', {
